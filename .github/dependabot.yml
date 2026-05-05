@@ -8,6 +8,14 @@ updates:
     open-pull-requests-limit: 5
     labels:
       - "deps"
+    # Ignore major bumps for tooling — those usually need manual review
+    # and a lockfile regeneration that Dependabot can't do under
+    # `bun install --frozen-lockfile`.
+    ignore:
+      - dependency-name: "@biomejs/*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
     groups:
       ai-sdk:
         patterns:
