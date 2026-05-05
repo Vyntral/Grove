@@ -1,0 +1,13 @@
+node_modules
+.grove
+.env
+.env.local
+.DS_Store
+*.log
+.bun/
+
+# Build artifacts produced by `bun scripts/prepublish.ts` — re-emitted on demand.
+packages/*/dist/
+
+# Test fixtures created on the fly.
+**/__fixtures__/*_active.ts

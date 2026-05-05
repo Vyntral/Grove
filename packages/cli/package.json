@@ -1,0 +1,47 @@
+{
+  "name": "@grove/cli",
+  "version": "0.0.3",
+  "description": "Grove CLI — init, run, inspect, compile.",
+  "type": "module",
+  "main": "./src/index.ts",
+  "bin": {
+    "grove": "./bin/grove.ts"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
+    }
+  },
+  "dependencies": {
+    "@grove/core": "workspace:*",
+    "@grove/runtime": "workspace:*",
+    "@grove/compiler": "workspace:*",
+    "@grove/bench": "workspace:*",
+    "@grove/eval": "workspace:*"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src",
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vyntral/Grove.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://grove.dev",
+  "keywords": [
+    "agents",
+    "ai",
+    "llm",
+    "supervisor",
+    "otp",
+    "grove"
+  ]
+}

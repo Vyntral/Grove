@@ -1,0 +1,51 @@
+{
+  "name": "@grove/runtime",
+  "version": "0.0.3",
+  "description": "Grove runtime — supervised agent processes, time-travel recorder, hot-reloadable workers.",
+  "type": "module",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
+    }
+  },
+  "dependencies": {
+    "@grove/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "ai": "^6.0.0",
+    "zod": "^3.23.0"
+  },
+  "peerDependenciesMeta": {
+    "ai": {
+      "optional": true
+    }
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src",
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vyntral/Grove.git",
+    "directory": "packages/runtime"
+  },
+  "homepage": "https://grove.dev",
+  "keywords": [
+    "agents",
+    "ai",
+    "llm",
+    "supervisor",
+    "otp",
+    "grove"
+  ]
+}

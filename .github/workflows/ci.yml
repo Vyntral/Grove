@@ -1,0 +1,37 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.13
+
+      - name: install
+        run: bun install --frozen-lockfile
+
+      - name: typecheck
+        run: bun run typecheck
+
+      - name: test
+        run: bun test
+
+      - name: smoke (mock backend, no key)
+        run: |
+          bun packages/examples/src/hello.ts
+          bun packages/examples/src/crash.ts
+          bun packages/examples/src/cached.ts
+
+      - name: compile demo
+        run: bun packages/cli/bin/grove.ts compile packages/examples/src/research.ts

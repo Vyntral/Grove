@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "target": "ESNext",
+    "module": "Preserve",
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "types": ["bun"],
+
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+
+    "strict": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    "paths": {
+      "@grove/core": ["./packages/core/src/index.ts"],
+      "@grove/runtime": ["./packages/runtime/src/index.ts"],
+      "@grove/compiler": ["./packages/compiler/src/index.ts"],
+      "@grove/cli": ["./packages/cli/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "**/dist", ".grove"]
+}

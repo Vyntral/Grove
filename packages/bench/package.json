@@ -1,0 +1,44 @@
+{
+  "name": "@grove/bench",
+  "version": "0.0.3",
+  "description": "Grove Bench — live web inspector for the runtime (topology, timeline, time-travel).",
+  "type": "module",
+  "main": "./src/server.ts",
+  "exports": {
+    ".": {
+      "types": "./src/server.ts",
+      "import": "./src/server.ts"
+    }
+  },
+  "bin": {
+    "grove-bench": "./bin/bench.ts"
+  },
+  "dependencies": {
+    "@grove/core": "workspace:*",
+    "@grove/runtime": "workspace:*"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src",
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vyntral/Grove.git",
+    "directory": "packages/bench"
+  },
+  "homepage": "https://grove.dev",
+  "keywords": [
+    "agents",
+    "ai",
+    "llm",
+    "supervisor",
+    "otp",
+    "grove"
+  ]
+}

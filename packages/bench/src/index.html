@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grove · Bench</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Inter", sans-serif; }
+    .mono { font-family: ui-monospace, "JetBrains Mono", "SF Mono", monospace; }
+    .scroll-soft::-webkit-scrollbar { width: 6px; height: 6px; }
+    .scroll-soft::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+    .ev-spawn { color: #4ade80; }
+    .ev-stop { color: #94a3b8; }
+    .ev-crash { color: #f87171; }
+    .ev-restart { color: #fbbf24; }
+    .ev-hot_reload { color: #fb923c; }
+    .ev-tool_call { color: #c084fc; }
+    .ev-tool_result { color: #67e8f9; }
+    .ev-model_call { color: #93c5fd; }
+    .ev-cache_hit { color: #34d399; font-weight: 600; }
+    .ev-cache_miss { color: #94a3b8; }
+    .ev-prompt_cache { color: #f472b6; font-weight: 600; }
+    .ev-message { color: #d1d5db; }
+    .pill { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 9999px; font-size: 10px; }
+    kbd { font-family: ui-monospace, monospace; font-size: 10px; background: rgba(255,255,255,0.08); padding: 1px 5px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.12); }
+    .timeline-row { display: grid; grid-template-columns: 56px 100px 130px 1fr; gap: 12px; align-items: baseline; padding: 3px 8px; border-radius: 4px; cursor: pointer; }
+    .timeline-row:hover { background: rgba(255,255,255,0.04); }
+    .timeline-row.selected { background: rgba(52,211,153,0.08); }
+    .timeline-row.preview-future { opacity: 0.25; }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen">
+  <header class="border-b border-zinc-800 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="text-2xl">🌳</div>
+      <div>
+        <div class="font-bold tracking-tight">Grove · Bench</div>
+        <div class="text-xs text-zinc-500">live inspector for supervised agents</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="text-[10px] text-zinc-600 hidden md:flex items-center gap-2">
+        <kbd>←</kbd><kbd>→</kbd> step
+        <kbd>Home</kbd><kbd>End</kbd> jump
+        <kbd>F</kbd> fork
+      </div>
+      <div id="status" class="mono text-xs text-zinc-500">connecting…</div>
+    </div>
+  </header>
+
+  <main class="grid grid-cols-12 gap-4 p-4 h-[calc(100vh-72px)]">
+    <!-- LEFT: sessions list + summary -->
+    <aside class="col-span-3 flex flex-col gap-4 overflow-hidden">
+      <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-3 overflow-y-auto scroll-soft flex-1">
+        <div class="flex items-center justify-between mb-2">
+          <div class="font-semibold text-sm">sessions</div>
+          <button id="refresh" class="text-xs text-zinc-500 hover:text-zinc-300">refresh</button>
+        </div>
+        <ul id="sessions" class="space-y-1"></ul>
+      </div>
+      <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-3">
+        <div class="text-sm font-semibold mb-2">summary</div>
+        <dl id="summary" class="text-xs text-zinc-400 space-y-1.5">
+          <div class="flex justify-between"><dt>events</dt><dd id="sum-events" class="mono text-zinc-200">—</dd></div>
+          <div class="flex justify-between"><dt>tool cache</dt><dd id="sum-toolcache" class="mono text-zinc-200">—</dd></div>
+          <div class="flex justify-between"><dt>prompt cache</dt><dd id="sum-promptcache" class="mono text-zinc-200">—</dd></div>
+          <div class="flex justify-between"><dt>tokens saved</dt><dd id="sum-tokens" class="mono text-emerald-300">—</dd></div>
+          <div class="flex justify-between"><dt>crashes</dt><dd id="sum-crashes" class="mono text-zinc-200">—</dd></div>
+          <div class="flex justify-between"><dt>hot reloads</dt><dd id="sum-hotreloads" class="mono text-zinc-200">—</dd></div>
+        </dl>
+      </div>
+    </aside>
+
+    <!-- CENTER: topology + timeline -->
+    <section class="col-span-6 flex flex-col gap-4 overflow-hidden">
+      <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-4">
+        <div class="text-sm font-semibold mb-2">topology</div>
+        <pre id="topology" class="mono text-xs text-zinc-400 whitespace-pre-wrap"></pre>
+      </div>
+
+      <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-4 flex-1 flex flex-col overflow-hidden">
+        <div class="flex items-center justify-between mb-2">
+          <div class="text-sm font-semibold flex items-center gap-3">
+            timeline
+            <span id="cache-pill" class="pill bg-emerald-900 text-emerald-300 hidden">
+              <span class="mr-1">●</span><span id="cache-stats">0 hits</span>
+            </span>
+          </div>
+          <div class="flex items-center gap-3">
+            <button id="fork-btn" class="text-xs text-zinc-500 hover:text-zinc-200 hidden">
+              fork from step <kbd>F</kbd>
+            </button>
+            <div id="timeline-meta" class="mono text-xs text-zinc-500"></div>
+          </div>
+        </div>
+        <input id="scrubber" type="range" min="0" max="0" value="0" class="w-full mb-3" />
+        <ul id="events" class="mono text-xs overflow-y-auto scroll-soft pr-2 flex-1"></ul>
+      </div>
+    </section>
+
+    <!-- RIGHT: step inspector -->
+    <aside class="col-span-3 bg-zinc-900 border border-zinc-800 rounded-xl p-4 overflow-y-auto scroll-soft">
+      <div class="text-sm font-semibold mb-2">step</div>
+      <div id="step-summary" class="text-xs mb-3 text-zinc-300"></div>
+      <pre id="step-detail" class="mono text-[11px] text-zinc-400 whitespace-pre-wrap break-words">click an event in the timeline</pre>
+    </aside>
+  </main>
+
+  <!-- fork modal -->
+  <div id="fork-modal" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-10">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 w-[480px]">
+      <div class="text-sm font-semibold mb-2">fork from this step</div>
+      <p class="text-xs text-zinc-400 mb-4">
+        Saves a prefix snapshot up to this event under <span class="mono text-zinc-200">.grove/forks/</span>.
+        The new fork is replayable but does not re-execute side effects.
+      </p>
+      <pre id="fork-preview" class="mono text-[11px] text-zinc-500 mb-4 max-h-32 overflow-y-auto scroll-soft"></pre>
+      <div class="flex justify-end gap-2">
+        <button id="fork-cancel" class="text-xs text-zinc-500 hover:text-zinc-200 px-3 py-1.5 rounded">cancel</button>
+        <button id="fork-confirm" class="text-xs bg-emerald-700 hover:bg-emerald-600 text-white px-3 py-1.5 rounded">create fork</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    const sessionsEl = document.getElementById('sessions')
+    const eventsEl = document.getElementById('events')
+    const scrubber = document.getElementById('scrubber')
+    const topologyEl = document.getElementById('topology')
+    const detailEl = document.getElementById('step-detail')
+    const stepSummaryEl = document.getElementById('step-summary')
+    const statusEl = document.getElementById('status')
+    const tlMeta = document.getElementById('timeline-meta')
+    const forkBtn = document.getElementById('fork-btn')
+    const forkModal = document.getElementById('fork-modal')
+
+    let currentEvents = []
+    let currentSessionId = null
+    let selectedIdx = -1
+
+    async function loadSessions() {
+      const res = await fetch('/api/sessions')
+      const list = await res.json()
+      sessionsEl.innerHTML = ''
+      for (const s of list) {
+        const li = document.createElement('li')
+        const dur = s.endedAt ? `${s.endedAt - s.startedAt}ms` : 'running'
+        li.className = 'cursor-pointer rounded-md px-2 py-1.5 hover:bg-zinc-800 mono text-xs ' +
+          (s.id === currentSessionId ? 'bg-zinc-800 text-emerald-300' : 'text-zinc-400')
+        li.innerHTML = `<div class="font-bold">${s.id}</div><div class="text-[10px] text-zinc-500">${dur}</div>`
+        li.onclick = () => loadSession(s.id)
+        sessionsEl.appendChild(li)
+      }
+    }
+
+    async function loadSession(id) {
+      currentSessionId = id
+      const res = await fetch('/api/sessions/' + id)
+      if (!res.ok) return
+      const session = await res.json()
+      currentEvents = session.events
+      topologyEl.textContent = renderTopology(session.topology)
+      scrubber.max = Math.max(0, session.events.length - 1)
+      scrubber.value = session.events.length - 1
+      selectedIdx = currentEvents.length - 1
+      tlMeta.textContent = `${session.events.length} events · ${session.endedAt ? (session.endedAt - session.startedAt) + 'ms' : 'live'}`
+      renderEvents(scrubber.value)
+      loadSessions()
+    }
+
+    function renderEvents(upTo) {
+      eventsEl.innerHTML = ''
+      const t0 = currentEvents[0]?.t ?? 0
+      currentEvents.forEach((ev, idx) => {
+        const li = document.createElement('li')
+        const isFuture = idx > upTo
+        li.className = `timeline-row${idx === selectedIdx ? ' selected' : ''}${isFuture ? ' preview-future' : ''}`
+        li.innerHTML = `
+          <span class="text-zinc-600 text-right">${ev.t - t0}ms</span>
+          <span class="ev-${ev.type}">${ev.type}</span>
+          <span class="text-zinc-300 truncate">${ev.process}</span>
+          <span class="text-zinc-500 truncate">${formatData(ev.data)}</span>
+        `
+        li.onclick = () => {
+          selectedIdx = idx
+          scrubber.value = idx
+          renderEvents(idx)
+        }
+        eventsEl.appendChild(li)
+      })
+      const sel = eventsEl.querySelector('.selected')
+      if (sel) sel.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
+      updateSummary(upTo)
+      showStepDetail(currentEvents[selectedIdx])
+      forkBtn.classList.toggle('hidden', selectedIdx < 0)
+    }
+
+    function updateSummary(upTo) {
+      let toolHits = 0, toolMisses = 0, promptCreated = 0, promptRead = 0
+      let tokensSaved = 0, crashes = 0, hotReloads = 0
+      const slice = currentEvents.slice(0, Number(upTo) + 1)
+      for (const ev of slice) {
+        if (ev.type === 'cache_hit') toolHits += 1
+        else if (ev.type === 'cache_miss') toolMisses += 1
+        else if (ev.type === 'prompt_cache') {
+          promptCreated += Number(ev.data?.cacheCreated ?? 0)
+          promptRead += Number(ev.data?.cacheRead ?? 0)
+          tokensSaved += Number(ev.data?.tokensSaved ?? 0)
+        } else if (ev.type === 'crash') crashes += 1
+        else if (ev.type === 'hot_reload') hotReloads += 1
+      }
+      document.getElementById('sum-events').textContent = `${slice.length} / ${currentEvents.length}`
+      const toolRate = (toolHits + toolMisses) > 0
+        ? `${toolHits}/${toolHits + toolMisses} (${Math.round(100 * toolHits / (toolHits + toolMisses))}%)`
+        : '—'
+      document.getElementById('sum-toolcache').textContent = toolRate
+      const promptInfo = (promptCreated + promptRead) > 0
+        ? `${promptRead.toLocaleString()} read, ${promptCreated.toLocaleString()} written`
+        : '—'
+      document.getElementById('sum-promptcache').textContent = promptInfo
+      document.getElementById('sum-tokens').textContent = tokensSaved > 0
+        ? `${tokensSaved.toLocaleString()} tok`
+        : '—'
+      document.getElementById('sum-crashes').textContent = crashes || '—'
+      document.getElementById('sum-hotreloads').textContent = hotReloads || '—'
+
+      const pill = document.getElementById('cache-pill')
+      const stats = document.getElementById('cache-stats')
+      if (toolHits + toolMisses + promptRead > 0) {
+        pill.classList.remove('hidden')
+        const parts = []
+        if (toolHits > 0) parts.push(`${toolHits} tool hits`)
+        if (promptRead > 0) parts.push(`${promptRead.toLocaleString()} prompt-tok`)
+        stats.textContent = parts.join(' · ') || `${toolHits} hits`
+      } else pill.classList.add('hidden')
+    }
+
+    function formatData(d) {
+      if (!d) return ''
+      try { return JSON.stringify(d).slice(0, 80) } catch { return String(d) }
+    }
+
+    function showStepDetail(ev) {
+      if (!ev) {
+        stepSummaryEl.textContent = ''
+        detailEl.textContent = 'click an event in the timeline'
+        return
+      }
+      const t0 = currentEvents[0]?.t ?? 0
+      stepSummaryEl.innerHTML = `
+        <div class="ev-${ev.type} font-semibold">${ev.type}</div>
+        <div class="text-zinc-500 text-[10px] mono mt-1">+${ev.t - t0}ms · ${ev.process}</div>
+      `
+      detailEl.textContent = JSON.stringify(ev.data ?? {}, null, 2)
+    }
+
+    function renderTopology(node, depth = 0) {
+      if (!node) return ''
+      const pad = '  '.repeat(depth)
+      if (node.kind === 'supervisor') {
+        const head = `${pad}◇ ${node.name}  [${node.strategy}]`
+        const kids = (node.children ?? []).map((c) => renderTopology(c, depth + 1)).join('\n')
+        return head + (kids ? '\n' + kids : '')
+      }
+      const tools = node.tools?.length ? `  (${node.tools.join(', ')})` : ''
+      return `${pad}◯ ${node.name}  ${node.model}${tools}`
+    }
+
+    /* ─── input handlers ─── */
+
+    scrubber.addEventListener('input', (e) => {
+      selectedIdx = Number(e.target.value)
+      renderEvents(selectedIdx)
+    })
+
+    document.getElementById('refresh').onclick = loadSessions
+
+    document.addEventListener('keydown', (e) => {
+      if (e.target instanceof HTMLInputElement) return
+      if (currentEvents.length === 0) return
+      const max = currentEvents.length - 1
+      let next = selectedIdx
+      switch (e.key) {
+        case 'ArrowLeft': next = Math.max(0, selectedIdx - 1); break
+        case 'ArrowRight': next = Math.min(max, selectedIdx + 1); break
+        case 'Home': next = 0; break
+        case 'End': next = max; break
+        case 'f': case 'F':
+          if (selectedIdx >= 0) openForkModal()
+          return
+        default: return
+      }
+      e.preventDefault()
+      selectedIdx = next
+      scrubber.value = next
+      renderEvents(next)
+    })
+
+    /* ─── fork ─── */
+
+    forkBtn.onclick = openForkModal
+    document.getElementById('fork-cancel').onclick = closeForkModal
+    document.getElementById('fork-confirm').onclick = doFork
+    forkModal.onclick = (e) => { if (e.target === forkModal) closeForkModal() }
+
+    function openForkModal() {
+      if (selectedIdx < 0 || !currentSessionId) return
+      const prefix = currentEvents.slice(0, selectedIdx + 1)
+      document.getElementById('fork-preview').textContent =
+        `from ${currentSessionId} @ event #${selectedIdx + 1}\n${prefix.length} events captured\nlast: ${prefix[prefix.length - 1].type} on ${prefix[prefix.length - 1].process}`
+      forkModal.classList.remove('hidden')
+      forkModal.classList.add('flex')
+    }
+
+    function closeForkModal() {
+      forkModal.classList.add('hidden')
+      forkModal.classList.remove('flex')
+    }
+
+    async function doFork() {
+      const r = await fetch('/api/fork', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ sessionId: currentSessionId, throughIndex: selectedIdx }),
+      })
+      if (r.ok) {
+        const result = await r.json()
+        statusEl.textContent = `forked → ${result.forkPath}`
+      }
+      closeForkModal()
+    }
+
+    /* ─── live updates ─── */
+
+    const sse = new EventSource('/api/stream')
+    sse.onopen = () => statusEl.textContent = 'live'
+    sse.onerror = () => statusEl.textContent = 'disconnected'
+    sse.onmessage = (e) => {
+      try {
+        const msg = JSON.parse(e.data)
+        if (msg.kind === 'session_started') {
+          loadSessions()
+        } else if (msg.kind === 'event' && msg.sessionId === currentSessionId) {
+          const wasAtEnd = selectedIdx === currentEvents.length - 1
+          currentEvents.push(msg.event)
+          scrubber.max = currentEvents.length - 1
+          if (wasAtEnd) {
+            selectedIdx = currentEvents.length - 1
+            scrubber.value = selectedIdx
+          }
+          renderEvents(scrubber.value)
+        }
+      } catch {}
+    }
+
+    loadSessions()
+  </script>
+</body>
+</html>
