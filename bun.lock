@@ -5,6 +5,9 @@
     "": {
       "dependencies": {
         "@ai-sdk/anthropic": "^3.0.75",
+        "@grove/core": "workspace:*",
+        "@grove/mcp": "workspace:*",
+        "@grove/runtime": "workspace:*",
         "@modelcontextprotocol/sdk": "^1.29.0",
         "ai": "^6.0.175",
         "zod": "^4.4.3",

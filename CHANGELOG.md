@@ -6,6 +6,17 @@ All notable changes to Grove are documented here. The format follows
 
 ## [Unreleased]
 
+### Added — real-LLM integration tests
+- `tests/live/` — 6 integration tests that talk to the real Anthropic API:
+  AISDK roundtrip, typed tool calling, deterministic cache hits, prompt
+  caching (`cache_read > 0`), streaming chunk emission, MCP stdio end-to-end.
+  Auto-skipped when `ANTHROPIC_API_KEY` + `GROVE_DIRECT_PROVIDER=1` aren't
+  set, so default `bun run test` stays fast (37 tests, ~1.5s, no key) and
+  `bun run test:live` runs the real suite (~15s, a few cents).
+- `.github/workflows/ci-live.yml` — runs the live suite daily at 06:00 UTC
+  and on manual dispatch, gated on the `ANTHROPIC_API_KEY` repo secret.
+- New `test`, `test:live`, `test:all` scripts in root `package.json`.
+
 ### Added — pre-publish polish
 - **Streaming**. New `agent({ stream: true })` opt-in. AISDKBackend gets a
   `stream()` method that consumes `streamText().textStream` and emits

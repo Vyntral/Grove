@@ -1,7 +1,7 @@
 {
   "name": "grove-monorepo",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Grove — production-grade agent runtime with OTP-style supervision, compile-time optimization, and live time-travel inspection.",
   "type": "module",
   "workspaces": [
@@ -9,7 +9,9 @@
   ],
   "scripts": {
     "build": "bun run --filter '*' build",
-    "test": "bun test",
+    "test": "bun test packages",
+    "test:live": "bun test tests/live",
+    "test:all": "bun test",
     "typecheck": "tsc --noEmit -p .",
     "format": "biome format --write .",
     "lint": "biome check ."
@@ -27,6 +29,9 @@
   "repository": "github:Vyntral/Grove",
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.75",
+    "@grove/core": "workspace:*",
+    "@grove/runtime": "workspace:*",
+    "@grove/mcp": "workspace:*",
     "@modelcontextprotocol/sdk": "^1.29.0",
     "ai": "^6.0.175",
     "zod": "^4.4.3"

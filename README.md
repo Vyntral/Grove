@@ -1,6 +1,7 @@
 # 🌳 Grove
 
 [![CI](https://github.com/Vyntral/Grove/actions/workflows/ci.yml/badge.svg)](https://github.com/Vyntral/Grove/actions/workflows/ci.yml)
+[![ci-live](https://github.com/Vyntral/Grove/actions/workflows/ci-live.yml/badge.svg)](https://github.com/Vyntral/Grove/actions/workflows/ci-live.yml)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Bun](https://img.shields.io/badge/bun-≥1.3-orange.svg)](https://bun.sh)
 [![status](https://img.shields.io/badge/status-v0.0.3-green.svg)](./CHANGELOG.md)
@@ -216,6 +217,24 @@ The AI SDK backend addresses models with the canonical `provider/model` syntax a
 - `google/gemini-3.1-pro`
 - `subq/subq-1m-preview`
 - … and any other AI Gateway-compatible model.
+
+## Tests
+
+Two suites:
+
+```bash
+# Unit + integration against MockBackend — fast, no API key needed.
+bun run test                    # 37 tests, ~1.5s
+
+# Real LLM integration against Anthropic — ~15s, costs a few cents.
+ANTHROPIC_API_KEY=sk-... GROVE_DIRECT_PROVIDER=1 bun run test:live   # 6 tests
+```
+
+The live suite covers AISDK roundtrip, typed tool calling, deterministic
+cache hits, Anthropic prompt caching (`cache_read > 0` on the second call),
+streaming chunk emission, and MCP stdio end-to-end. Skipped automatically
+when the env var is missing, so contributors don't need a key. CI runs the
+unit suite on every push and the live suite daily + on manual dispatch.
 
 ## Architecture
 
