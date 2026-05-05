@@ -57,7 +57,7 @@ for (const pkg of PUBLIC) {
     patched = true
   }
   if (!pkgJson.homepage) {
-    ;(pkgJson as Record<string, unknown>).homepage = `https://grove.dev`
+    ;(pkgJson as Record<string, unknown>).homepage = `https://vyntral.github.io/Grove`
     patched = true
   }
   if (!pkgJson.keywords) {
@@ -92,7 +92,7 @@ for (const pkg of PUBLIC) {
   // Sanity: README + LICENSE in dist or root.
   const readmePath = join(dir, 'README.md')
   if (!existsSync(readmePath)) {
-    const stub = `# ${pkgJson.name}\n\n${pkgJson.description}\n\nSee https://grove.dev for usage.\n`
+    const stub = `# ${pkgJson.name}\n\n${pkgJson.description}\n\nSee https://vyntral.github.io/Grove for usage.\n`
     writeFileSync(readmePath, stub)
     console.log(`  ✓ stub README created`)
   }

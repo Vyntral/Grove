@@ -2,4 +2,4 @@
 
 Grove core primitives: agent, tool, memory, supervise.
 
-See https://grove.dev for usage.
+See https://vyntral.github.io/Grove for usage.

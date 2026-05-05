@@ -29,7 +29,7 @@ ${c.bold('FLAGS')}
   ${c.cyan('-h, --help')}        show this help
   ${c.cyan('-v, --version')}     print version
 
-${c.dim('learn more: https://grove.dev')}
+${c.dim('learn more: https://vyntral.github.io/Grove')}
 `
 
 export async function main(argv: string[]): Promise<void> {

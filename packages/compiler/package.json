@@ -30,7 +30,7 @@
     "url": "git+https://github.com/Vyntral/Grove.git",
     "directory": "packages/compiler"
   },
-  "homepage": "https://grove.dev",
+  "homepage": "https://vyntral.github.io/Grove",
   "keywords": [
     "agents",
     "ai",
