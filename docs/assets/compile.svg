@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" width="760" height="280" role="img" aria-label="Grove compile demo: 10x cost reduction">
+  <defs>
+    <style><![CDATA[
+      .term-bg { fill: #0a0a0c; }
+      .term-border { fill: none; stroke: #27272a; stroke-width: 1; }
+      .dot-r { fill: #ef4444; }
+      .dot-y { fill: #f59e0b; }
+      .dot-g { fill: #22c55e; }
+      .title { fill: #71717a; font: 12px ui-monospace, "SF Mono", Menlo, monospace; }
+      .line { font: 13px ui-monospace, "SF Mono", Menlo, monospace; opacity: 0; }
+      .prompt { fill: #a1a1aa; }
+      .cmd    { fill: #e4e4e7; }
+      .info   { fill: #d4d4d8; }
+      .name   { fill: #93c5fd; font-weight: 600; }
+      .red    { fill: #f87171; font-weight: 600; }
+      .green  { fill: #4ade80; font-weight: 600; }
+      .accent { fill: #34d399; font-weight: 700; }
+      .dim    { fill: #71717a; }
+      .arrow  { fill: #71717a; }
+
+      @keyframes show {
+        0%, 100% { opacity: 0; }
+        4%, 92%  { opacity: 1; }
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0; transform: scale(0.96); }
+        25%, 92%  { opacity: 1; transform: scale(1); }
+      }
+
+      .l1 { animation: show 9s ease-in-out infinite; animation-delay: 0s; }
+      .l2 { animation: show 9s ease-in-out infinite; animation-delay: 0.7s; }
+      .l3 { animation: show 9s ease-in-out infinite; animation-delay: 1.5s; }
+      .l4 { animation: show 9s ease-in-out infinite; animation-delay: 2.3s; }
+      .l5 { animation: show 9s ease-in-out infinite; animation-delay: 3.1s; }
+      .total { animation: pulse 9s ease-in-out infinite; animation-delay: 4.0s; transform-origin: 380px 200px; transform-box: fill-box; }
+      .pre { animation: show 9s ease-in-out infinite; animation-delay: 5.2s; }
+    ]]></style>
+  </defs>
+
+  <rect class="term-bg" x="0" y="0" width="760" height="280" rx="8" />
+  <rect class="term-border" x="0.5" y="0.5" width="759" height="279" rx="8" />
+
+  <circle class="dot-r" cx="20" cy="20" r="6" />
+  <circle class="dot-y" cx="40" cy="20" r="6" />
+  <circle class="dot-g" cx="60" cy="20" r="6" />
+  <text class="title" x="380" y="24" text-anchor="middle">grove · compile</text>
+
+  <g transform="translate(20, 60)">
+    <text class="line l1">
+      <tspan class="prompt">$</tspan>
+      <tspan class="cmd" dx="6">grove compile examples/research.ts</tspan>
+    </text>
+
+    <text class="line l2" y="36">
+      <tspan class="name">  researcher</tspan>
+      <tspan class="dim" dx="6">claude-opus-4-7</tspan>
+      <tspan class="dim" dx="20">cost/run:</tspan>
+      <tspan class="red" dx="6">$0.1200</tspan>
+    </text>
+    <text class="line l3" y="58">
+      <tspan class="name">  writer    </tspan>
+      <tspan class="dim" dx="6">claude-sonnet-4-6</tspan>
+      <tspan class="dim" dx="6">cost/run:</tspan>
+      <tspan class="red" dx="6">$0.0240</tspan>
+    </text>
+
+    <text class="line l4" y="92">
+      <tspan class="dim">total cost projection:</tspan>
+    </text>
+  </g>
+
+  <g class="total" font="bold 28px ui-monospace, 'SF Mono', Menlo, monospace" text-anchor="middle">
+    <text x="180" y="200" class="red">$0.1440</text>
+    <text x="380" y="200" class="arrow" font-size="22">→</text>
+    <text x="580" y="200" class="green">$0.0144</text>
+    <text x="380" y="232" class="accent" font-size="14">10× cheaper</text>
+  </g>
+
+  <text class="line pre" x="20" y="262">
+    <tspan class="green" font-weight="700">  ✓</tspan>
+    <tspan class="info" dx="6">prewarmed cache with 3 entries</tspan>
+  </text>
+</svg>

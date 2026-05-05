@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" width="760" height="280" role="img" aria-label="Grove supervisor demo: crash and restart">
+  <defs>
+    <style><![CDATA[
+      .term-bg { fill: #0a0a0c; }
+      .term-border { fill: none; stroke: #27272a; stroke-width: 1; }
+      .dot { fill: #3f3f46; }
+      .dot-r { fill: #ef4444; }
+      .dot-y { fill: #f59e0b; }
+      .dot-g { fill: #22c55e; }
+      .title { fill: #71717a; font: 12px ui-monospace, "SF Mono", Menlo, monospace; }
+      .line { font: 13px ui-monospace, "SF Mono", Menlo, monospace; opacity: 0; }
+      .prompt { fill: #a1a1aa; }
+      .cmd    { fill: #e4e4e7; }
+      .info   { fill: #d4d4d8; }
+      .err    { fill: #f87171; font-weight: 600; }
+      .warn   { fill: #fbbf24; }
+      .ok     { fill: #4ade80; font-weight: 600; }
+      .dim    { fill: #71717a; }
+
+      @keyframes show {
+        0%, 100% { opacity: 0; }
+        2%, 92%  { opacity: 1; }
+      }
+
+      .l1 { animation: show 9s ease-in-out infinite; animation-delay: 0s; }
+      .l2 { animation: show 9s ease-in-out infinite; animation-delay: 0.6s; }
+      .l3 { animation: show 9s ease-in-out infinite; animation-delay: 1.6s; }
+      .l4 { animation: show 9s ease-in-out infinite; animation-delay: 2.6s; }
+      .l5 { animation: show 9s ease-in-out infinite; animation-delay: 3.6s; }
+      .l6 { animation: show 9s ease-in-out infinite; animation-delay: 4.6s; }
+      .l7 { animation: show 9s ease-in-out infinite; animation-delay: 5.6s; }
+    ]]></style>
+  </defs>
+
+  <rect class="term-bg" x="0" y="0" width="760" height="280" rx="8" />
+  <rect class="term-border" x="0.5" y="0.5" width="759" height="279" rx="8" />
+
+  <!-- Window chrome -->
+  <circle class="dot-r" cx="20" cy="20" r="6" />
+  <circle class="dot-y" cx="40" cy="20" r="6" />
+  <circle class="dot-g" cx="60" cy="20" r="6" />
+  <text class="title" x="380" y="24" text-anchor="middle">grove · supervisor</text>
+
+  <!-- Lines -->
+  <g transform="translate(20, 60)">
+    <text class="line l1">
+      <tspan class="prompt">$</tspan>
+      <tspan class="cmd" dx="6">bun packages/examples/src/crash.ts</tspan>
+    </text>
+
+    <text class="line l2" y="26"><tspan class="info">attempt 1 (will crash) ...</tspan></text>
+
+    <text class="line l3" y="52">
+      <tspan class="dim">  caught:</tspan>
+      <tspan class="err" dx="4">simulated transient failure</tspan>
+    </text>
+
+    <text class="line l4" y="78">
+      <tspan class="dim">  [supervisor]</tspan>
+      <tspan class="warn" dx="4">one_for_one</tspan>
+      <tspan class="dim" dx="4">→ restarting worker</tspan>
+    </text>
+
+    <text class="line l5" y="104">
+      <tspan class="dim">  [supervisor]</tspan>
+      <tspan class="ok" dx="4">spawn</tspan>
+      <tspan class="dim" dx="4">worker (new id)</tspan>
+    </text>
+
+    <text class="line l6" y="130"><tspan class="info">attempt 2 (after restart) ...</tspan></text>
+
+    <text class="line l7" y="156">
+      <tspan class="dim">  result:</tspan>
+      <tspan class="ok" dx="4">pong: second</tspan>
+    </text>
+  </g>
+
+  <!-- Caption -->
+  <text class="title" x="380" y="252" text-anchor="middle">
+    let it crash · supervise · let it heal
+  </text>
+</svg>

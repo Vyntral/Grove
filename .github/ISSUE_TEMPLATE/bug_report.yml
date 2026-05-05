@@ -1,0 +1,72 @@
+name: 🐛 Bug report
+description: Something is broken or behaving unexpectedly
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this. The fastest way for us to
+        fix something is a small reproduction — even a 10-line `agent.ts`
+        beats a paragraph of prose.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: |
+        Describe the symptom. What did you expect, what did you get?
+      placeholder: |
+        I called `handle.run(...)` and the agent crashed with...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: |
+        Smallest agent definition + commands that show the problem.
+      render: ts
+      placeholder: |
+        import { agent, supervise } from '@grove/core'
+        // ...
+    validations:
+      required: true
+
+  - type: input
+    id: grove-version
+    attributes:
+      label: Grove version
+      description: From `grove --version` or `package.json`
+      placeholder: 0.0.3
+    validations:
+      required: true
+
+  - type: input
+    id: bun-version
+    attributes:
+      label: Bun version
+      description: From `bun --version`
+      placeholder: 1.3.13
+    validations:
+      required: true
+
+  - type: dropdown
+    id: backend
+    attributes:
+      label: Backend
+      options:
+        - mock (default)
+        - ai-sdk + AI Gateway
+        - ai-sdk + direct Anthropic
+        - ai-sdk + other provider
+        - custom
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs / `grove inspect <session>` output
+      description: Paste the recorder timeline if you can — it usually pins the bug.
+      render: shell

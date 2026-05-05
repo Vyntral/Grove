@@ -1,0 +1,39 @@
+name: 💡 Feature request
+description: Propose a new capability for Grove
+labels: ["feature", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Grove stays small on purpose. Before opening, check the roadmap in
+        `docs/architecture.md` and the existing issues — your idea may
+        already be planned or have an existing thread.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What can't you do today, or what's painful?
+      placeholder: |
+        When my agent calls Anthropic and the API is rate-limited...
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API
+      description: |
+        Even a sketch helps. What does the call site look like?
+      render: ts
+      placeholder: |
+        agent({
+          ...,
+          rateLimit: { rpm: 60 },
+        })
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: How could a user achieve the goal today, even painfully?

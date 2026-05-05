@@ -7,6 +7,10 @@
 
 > **Production-grade AI agents.** OTP-style supervision, compile-time optimization, live time-travel inspection, behaviour diff. Built for engineers who need agents that don't fall over in prod.
 
+<p align="center">
+  <img src="./docs/assets/crash.svg" alt="Grove supervisor crash + restart demo" width="720">
+</p>
+
 ```bash
 bun add @grove/core @grove/runtime
 ```
@@ -51,6 +55,10 @@ await handle.run({ topic: 'sparse attention' })
 
 Most agent workflows have stable, deterministic paths — formatting, parsing, lookups, cached responses. Grove's compiler analyzes your topology, identifies which steps don't actually need an LLM, and projects the cost reduction. The runtime cache then makes the projection real: deterministic tool calls hit a SQLite-backed cache before invoking the model.
 
+<p align="center">
+  <img src="./docs/assets/compile.svg" alt="grove compile shows 10x cost reduction" width="720">
+</p>
+
 ```bash
 $ grove compile examples/research.ts
   total cost projection: $0.1440 → $0.0144 (10.0× cheaper)
@@ -63,6 +71,10 @@ $ bun packages/examples/src/persist.ts        # second run (cached)
 run: 99ms
 cache: { entries: 1, hits: 1, misses: 0, hitRate: 1 }
 ```
+
+<p align="center">
+  <img src="./docs/assets/cache.svg" alt="cross-process cache: 599ms → 99ms" width="720">
+</p>
 
 The cache survives across processes — restart your dev server, redeploy your worker, the warm cache stays warm.
 
