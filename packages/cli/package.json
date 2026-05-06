@@ -1,6 +1,6 @@
 {
   "name": "@vyntral/grove-cli",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Grove CLI — init, run, inspect, compile.",
   "type": "module",
   "main": "./src/index.ts",

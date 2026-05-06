@@ -1,6 +1,6 @@
 {
   "name": "@vyntral/grove-runtime",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Grove runtime \u2014 supervised agent processes, time-travel recorder, hot-reloadable workers.",
   "type": "module",
   "main": "./src/index.ts",

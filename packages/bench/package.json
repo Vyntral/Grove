@@ -1,6 +1,6 @@
 {
   "name": "@vyntral/grove-bench",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Grove Bench — live web inspector for the runtime (topology, timeline, time-travel).",
   "type": "module",
   "main": "./src/server.ts",

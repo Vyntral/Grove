@@ -1,6 +1,6 @@
 {
   "name": "@vyntral/grove-eval",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Grove eval — declare cases, run them through an agent, capture behavioural profiles, diff across runs.",
   "type": "module",
   "main": "./src/index.ts",

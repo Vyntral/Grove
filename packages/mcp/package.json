@@ -1,6 +1,6 @@
 {
   "name": "@vyntral/grove-mcp",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Grove MCP adapter — mount tools from any Model Context Protocol server as Grove tools.",
   "type": "module",
   "main": "./src/index.ts",
