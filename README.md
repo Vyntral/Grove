@@ -11,7 +11,7 @@
 > **Production-grade AI agents.** OTP-style supervision, compile-time optimization, live time-travel inspection, behaviour diff. Built for engineers who need agents that don't fall over in prod.
 
 <p align="center">
-  <img src="./docs/assets/crash.gif" alt="Grove supervisor crash + restart demo" width="780">
+  <img src="./docs/assets/full-demo.gif" alt="Grove full feature flyby — 30 seconds" width="820">
 </p>
 
 ```bash
