@@ -6,6 +6,26 @@ All notable changes to Grove are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.0.5] — 2026-05-06 — first npm release
+
+### Changed (breaking)
+- **Scope renamed `@grove/*` → `@vyntral/grove-*`.** `@grove` was already
+  taken on npm; rather than block on namespace negotiation, packages ship
+  under the user's scope. Public install:
+  ```
+  bun add @vyntral/grove-core @vyntral/grove-runtime @vyntral/grove-cli
+  ```
+- `peerDependencies.zod` widened from `^3.23.0` to `^3.23.0 || ^4.0.0` —
+  Grove uses only `safeParse()`, identical across the two majors. Fixes
+  ERESOLVE for consumers on Zod 4 (the current default).
+- Bumped `0.0.3 → 0.0.5` to allow re-publish under the new scope. 0.0.4
+  was a broken intermediate (`workspace:*` leaked into the tarball) and
+  was unpublished the same minute.
+
+### Added
+- All 7 packages live at https://www.npmjs.com/~vyntral. Verified with a
+  fresh consumer install + `bunx @vyntral/grove-cli`.
+
 ### Added — real-LLM integration tests
 - `tests/live/` — 6 integration tests that talk to the real Anthropic API:
   AISDK roundtrip, typed tool calling, deterministic cache hits, prompt
