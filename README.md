@@ -4,7 +4,9 @@
 [![ci-live](https://github.com/Vyntral/Grove/actions/workflows/ci-live.yml/badge.svg)](https://github.com/Vyntral/Grove/actions/workflows/ci-live.yml)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Bun](https://img.shields.io/badge/bun-≥1.3-orange.svg)](https://bun.sh)
-[![status](https://img.shields.io/badge/status-v0.0.3-green.svg)](./CHANGELOG.md)
+[![npm](https://img.shields.io/npm/v/@vyntral/grove-core?label=npm&color=cb3837)](https://www.npmjs.com/package/@vyntral/grove-core)
+[![docs](https://img.shields.io/badge/docs-vyntral.github.io/Grove-blue.svg)](https://vyntral.github.io/Grove)
+[![CHANGELOG](https://img.shields.io/badge/changelog-v0.0.5-green.svg)](./CHANGELOG.md)
 
 > **Production-grade AI agents.** OTP-style supervision, compile-time optimization, live time-travel inspection, behaviour diff. Built for engineers who need agents that don't fall over in prod.
 
