@@ -1,4 +1,4 @@
-import type { AgentDef, StepRecord, SupervisorDef } from '@grove/core'
+import type { AgentDef, StepRecord, SupervisorDef } from '@vyntral/grove-core'
 
 export type ProcessStatus =
   | 'starting'

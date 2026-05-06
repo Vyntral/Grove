@@ -10,9 +10,9 @@
  * MCP-native, this file will fail.
  */
 import { join } from 'node:path'
-import { agent, supervise } from '@grove/core'
-import { start } from '@grove/runtime'
-import { mcpServer } from '@grove/mcp'
+import { agent, supervise } from '@vyntral/grove-core'
+import { start } from '@vyntral/grove-runtime'
+import { mcpServer } from '@vyntral/grove-mcp'
 
 const fixturePath = join(import.meta.dir, 'mcp-server-fixture.ts')
 

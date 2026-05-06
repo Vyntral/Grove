@@ -28,7 +28,7 @@ body:
         Smallest agent definition + commands that show the problem.
       render: ts
       placeholder: |
-        import { agent, supervise } from '@grove/core'
+        import { agent, supervise } from '@vyntral/grove-core'
         // ...
     validations:
       required: true

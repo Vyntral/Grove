@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test'
-import { agent, supervise } from '@grove/core'
-import { start, AISDKBackend } from '@grove/runtime'
+import { agent, supervise } from '@vyntral/grove-core'
+import { start, AISDKBackend } from '@vyntral/grove-runtime'
 import { liveOnly } from './_gate.ts'
 
 liveOnly('AISDK roundtrip vs claude-haiku-4-5', () => {

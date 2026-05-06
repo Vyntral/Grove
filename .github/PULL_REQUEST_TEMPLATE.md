@@ -18,5 +18,5 @@ Closes #
 - [ ] `bun run typecheck` clean
 - [ ] `bun test` green
 - [ ] New API surface has a test
-- [ ] If touching `@grove/core` or `@grove/runtime`, `docs/spec.md` updated
+- [ ] If touching `@vyntral/grove-core` or `@vyntral/grove-runtime`, `docs/spec.md` updated
 - [ ] If user-facing change, `CHANGELOG.md` updated under `## [Unreleased]`

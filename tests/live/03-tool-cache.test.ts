@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test'
-import { agent, supervise, tool } from '@grove/core'
-import { start, AISDKBackend, getRecorder, getCache } from '@grove/runtime'
+import { agent, supervise, tool } from '@vyntral/grove-core'
+import { start, AISDKBackend, getRecorder, getCache } from '@vyntral/grove-runtime'
 import { z } from 'zod'
 import { liveOnly } from './_gate.ts'
 

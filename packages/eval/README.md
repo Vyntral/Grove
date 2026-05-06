@@ -1,14 +1,14 @@
-# @grove/eval
+# @vyntral/grove-eval
 
 > Declarative eval cases + behaviour-diff between profiles. Catch
 > regressions in agent output before they ship.
 
 ```bash
-bun add @grove/eval
+bun add @vyntral/grove-eval
 ```
 
 ```ts
-import { suite, evalCase, contains, matches } from '@grove/eval'
+import { suite, evalCase, contains, matches } from '@vyntral/grove-eval'
 
 export const suite = suite('word-counter', [
   evalCase({

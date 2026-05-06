@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { execSync } from 'node:child_process'
 import { join } from 'node:path'
-import type { Process } from '@grove/runtime'
+import type { Process } from '@vyntral/grove-runtime'
 import type { CaseResult, EvalSuite, SuiteProfile } from './types.ts'
 
 /* ─── run ──────────────────────────────────────────────────────────── */

@@ -1,4 +1,4 @@
-import type { ToolDef } from '@grove/core'
+import type { ToolDef } from '@vyntral/grove-core'
 
 /**
  * Configuration for an MCP server Grove can attach to.
@@ -89,14 +89,14 @@ export async function mcpServer(config: McpServerConfig): Promise<McpHandle> {
   // Auto-register with Grove's shutdown registry so SIGINT cleans up the
   // MCP child even if the user forgot to await `handle.close()`.
   try {
-    const { installShutdown, onShutdown } = (await import('@grove/runtime')) as {
+    const { installShutdown, onShutdown } = (await import('@vyntral/grove-runtime')) as {
       installShutdown?: () => void
       onShutdown?: (fn: () => Promise<void> | void) => void
     }
     installShutdown?.()
     onShutdown?.(() => handle.close())
   } catch {
-    // @grove/runtime not available; fall through.
+    // @vyntral/grove-runtime not available; fall through.
   }
 
   return handle

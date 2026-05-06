@@ -1,6 +1,6 @@
 import { watch } from 'node:fs'
 import { resolve } from 'node:path'
-import { isAgent, isSupervisor, type AgentDef, type SupervisorDef } from '@grove/core'
+import { isAgent, isSupervisor, type AgentDef, type SupervisorDef } from '@vyntral/grove-core'
 import { getRecorder } from './recorder.ts'
 
 export interface WatchOptions {

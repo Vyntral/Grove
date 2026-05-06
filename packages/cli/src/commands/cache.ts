@@ -1,5 +1,5 @@
 import { c, symbols } from '../colors.ts'
-import { getCache, getRecorder } from '@grove/runtime'
+import { getCache, getRecorder } from '@vyntral/grove-runtime'
 
 /**
  * `grove cache [--stats|--clear|--prune=DAYS]` — manage Grove's local state.

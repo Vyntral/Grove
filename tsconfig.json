@@ -22,10 +22,10 @@
     "noImplicitOverride": true,
 
     "paths": {
-      "@grove/core": ["./packages/core/src/index.ts"],
-      "@grove/runtime": ["./packages/runtime/src/index.ts"],
-      "@grove/compiler": ["./packages/compiler/src/index.ts"],
-      "@grove/cli": ["./packages/cli/src/index.ts"]
+      "@vyntral/grove-core": ["./packages/core/src/index.ts"],
+      "@vyntral/grove-runtime": ["./packages/runtime/src/index.ts"],
+      "@vyntral/grove-compiler": ["./packages/compiler/src/index.ts"],
+      "@vyntral/grove-cli": ["./packages/cli/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "dist", "**/dist", ".grove"]

@@ -11,8 +11,8 @@
  * the same content is served from cache (`cache_read_input_tokens`) at ~10%
  * of normal input cost.
  */
-import { agent, supervise } from '@grove/core'
-import { start, AISDKBackend } from '@grove/runtime'
+import { agent, supervise } from '@vyntral/grove-core'
+import { start, AISDKBackend } from '@vyntral/grove-runtime'
 
 const SYSTEM = `You are Atlas, a senior research assistant for technical readers. You answer
 questions across distributed systems, programming language design, type

@@ -7,8 +7,8 @@
  * Demonstrates a research → write pipeline with several deterministic tools.
  * Run `grove compile` against this file to see the cost projection drop.
  */
-import { agent, supervise, tool } from '@grove/core'
-import { start } from '@grove/runtime'
+import { agent, supervise, tool } from '@vyntral/grove-core'
+import { start } from '@vyntral/grove-runtime'
 import { z } from 'zod'
 
 const search = tool({

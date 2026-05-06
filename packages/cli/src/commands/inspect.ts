@@ -1,5 +1,5 @@
 import { c, symbols } from '../colors.ts'
-import { getRecorder } from '@grove/runtime'
+import { getRecorder } from '@vyntral/grove-runtime'
 
 /** Pretty-print a session timeline to the terminal. */
 export async function cmdInspect(args: string[]): Promise<void> {

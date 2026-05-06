@@ -5,11 +5,11 @@
  *   # change a tool's logic, run again, then:
  *   bun packages/cli/bin/grove.ts diff word-counter
  *
- * Demonstrates @grove/eval: declare cases, run them, save a profile,
+ * Demonstrates @vyntral/grove-eval: declare cases, run them, save a profile,
  * compare profiles to detect regressions.
  */
-import { agent, supervise, tool } from '@grove/core'
-import { evalCase, suite, contains, matches } from '@grove/eval'
+import { agent, supervise, tool } from '@vyntral/grove-core'
+import { evalCase, suite, contains, matches } from '@vyntral/grove-eval'
 import { z } from 'zod'
 
 const wordCount = tool({

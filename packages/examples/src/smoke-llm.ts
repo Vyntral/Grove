@@ -9,8 +9,8 @@
  * the model is meant to actually call. Run twice — second invocation
  * hits the cache and avoids the tool round-trip.
  */
-import { agent, supervise, tool } from '@grove/core'
-import { start, AISDKBackend, getCache } from '@grove/runtime'
+import { agent, supervise, tool } from '@vyntral/grove-core'
+import { start, AISDKBackend, getCache } from '@vyntral/grove-runtime'
 import { z } from 'zod'
 
 const wordCount = tool({

@@ -57,7 +57,7 @@ All notable changes to Grove are documented here. The format follows
   the manifest. Errors during prewarm are recorded, not thrown.
 
 ### Added — earlier in this cycle
-- `@grove/mcp` — adapter that mounts tools from any MCP stdio server as
+- `@vyntral/grove-mcp` — adapter that mounts tools from any MCP stdio server as
   Grove `ToolDef[]`. New `mcpServer({ command, args, ... })` factory returns
   `{ tools, close() }`. Tool names are prefixed (default `<server>_`) to
   satisfy provider-specific name validation. Real end-to-end demo at
@@ -69,7 +69,7 @@ All notable changes to Grove are documented here. The format follows
 - `scripts/prepublish.ts` — emits `.d.ts` declarations into `dist/` per
   package, patches each `package.json` with `publishConfig`/`files`/
   `repository`/`homepage`/`keywords`. Verified `npm pack` produces a sane
-  tarball for `@grove/core` (5.5 KB, src + dist + LICENSE + README).
+  tarball for `@vyntral/grove-core` (5.5 KB, src + dist + LICENSE + README).
 - AI SDK schema adapter — JSON-Schema-shaped tool inputs are routed through
   AI SDK v6's `jsonSchema()` helper, so MCP-mounted tools type-check across
   providers.
@@ -88,7 +88,7 @@ All notable changes to Grove are documented here. The format follows
 ## [0.0.3] — 2026-05-06
 
 ### Added
-- `@grove/eval` — declarative eval suites + behaviour-diff between profiles
+- `@vyntral/grove-eval` — declarative eval suites + behaviour-diff between profiles
   (Autosys-inspired). New CLI commands `grove eval <file>` and
   `grove diff <suite>`. Profiles persist under `.grove/eval/<suite>/<sha>.json`
   and the diff classifies each case as `same`, `drift`, `regressed`,
@@ -107,7 +107,7 @@ All notable changes to Grove are documented here. The format follows
   `bun run agent.ts`, emits session id, demonstrates deterministic tools.
 
 ### Changed
-- Bumped version 0.0.1 → 0.0.3 across all `@grove/*` packages.
+- Bumped version 0.0.1 → 0.0.3 across all `@vyntral/grove-*` packages.
 
 ## [0.0.2] — 2026-05-05 (afternoon)
 
@@ -124,8 +124,8 @@ All notable changes to Grove are documented here. The format follows
 ## [0.0.1] — 2026-05-05 (morning)
 
 ### Added
-- Initial release of `@grove/core`, `@grove/runtime`, `@grove/compiler`,
-  `@grove/cli`, `@grove/bench`, `@grove/examples`.
+- Initial release of `@vyntral/grove-core`, `@vyntral/grove-runtime`, `@vyntral/grove-compiler`,
+  `@vyntral/grove-cli`, `@vyntral/grove-bench`, `@vyntral/grove-examples`.
 - OTP-style supervisor with `one_for_one` / `one_for_all` / `rest_for_one`
   strategies and restart intensity guard.
 - Process model: agents as supervised actors with mailboxes and lifecycle.

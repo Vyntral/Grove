@@ -1,8 +1,8 @@
 import { resolve } from 'node:path'
 import { existsSync } from 'node:fs'
 import { c, symbols } from '../colors.ts'
-import { isAgent, isSupervisor } from '@grove/core'
-import { start } from '@grove/runtime'
+import { isAgent, isSupervisor } from '@vyntral/grove-core'
+import { start } from '@vyntral/grove-runtime'
 import {
   isSuite,
   runSuite,
@@ -10,7 +10,7 @@ import {
   loadProfile,
   listProfiles,
   diffProfiles,
-} from '@grove/eval'
+} from '@vyntral/grove-eval'
 
 /**
  * `grove eval <file>` — load an eval suite from `<file>` and run every case

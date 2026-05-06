@@ -1,4 +1,4 @@
-# @grove/runtime
+# @vyntral/grove-runtime
 
 Grove runtime — supervised agent processes, time-travel recorder, hot-reloadable workers.
 

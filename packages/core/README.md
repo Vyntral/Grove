@@ -1,4 +1,4 @@
-# @grove/core
+# @vyntral/grove-core
 
 Grove core primitives: agent, tool, memory, supervise.
 

@@ -53,7 +53,7 @@ grove cache --clear
 Or programmatically:
 
 ```ts
-import { getRecorder } from '@grove/runtime'
+import { getRecorder } from '@vyntral/grove-runtime'
 getRecorder().purge(7 * 24 * 60 * 60 * 1000) // ms
 ```
 
@@ -125,7 +125,7 @@ collector. The event shape is documented in
 [docs/spec.md](./spec.md#runtime-events).
 
 ```ts
-import { getRecorder } from '@grove/runtime'
+import { getRecorder } from '@vyntral/grove-runtime'
 import { trace } from '@opentelemetry/api'
 
 getRecorder().events.subscribe((ev) => {

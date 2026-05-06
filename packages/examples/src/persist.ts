@@ -7,8 +7,8 @@
  * Unlike `cached.ts`, this script does NOT call `getCache().reset()`. Run it
  * twice from your shell — the second invocation is essentially free.
  */
-import { agent, supervise, tool } from '@grove/core'
-import { start, getCache } from '@grove/runtime'
+import { agent, supervise, tool } from '@vyntral/grove-core'
+import { start, getCache } from '@vyntral/grove-runtime'
 import { z } from 'zod'
 
 const slow = tool({

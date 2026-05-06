@@ -1,8 +1,8 @@
 import { expect, test } from 'bun:test'
 import { join } from 'node:path'
-import { agent, supervise } from '@grove/core'
-import { start, AISDKBackend, getRecorder } from '@grove/runtime'
-import { mcpServer } from '@grove/mcp'
+import { agent, supervise } from '@vyntral/grove-core'
+import { start, AISDKBackend, getRecorder } from '@vyntral/grove-runtime'
+import { mcpServer } from '@vyntral/grove-mcp'
 import { liveOnly } from './_gate.ts'
 
 liveOnly('MCP server tools are callable by a real model', () => {

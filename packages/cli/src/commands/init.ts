@@ -9,8 +9,8 @@ const TEMPLATE = `/**
  *   grove run --watch agent.ts   # dev loop with hot reload
  *   grove bench                  # open the live inspector
  */
-import { agent, supervise, tool } from '@grove/core'
-import { start } from '@grove/runtime'
+import { agent, supervise, tool } from '@vyntral/grove-core'
+import { start } from '@vyntral/grove-runtime'
 import { z } from 'zod'
 
 const greet = tool({

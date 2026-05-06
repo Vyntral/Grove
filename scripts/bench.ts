@@ -14,14 +14,14 @@
  */
 import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { agent, supervise, tool } from '@grove/core'
+import { agent, supervise, tool } from '@vyntral/grove-core'
 import {
   start,
   AISDKBackend,
   getCache,
   getRecorder,
   type RuntimeEvent,
-} from '@grove/runtime'
+} from '@vyntral/grove-runtime'
 import { z } from 'zod'
 
 const N_TOOL = 6 // 1 cold + 5 warm

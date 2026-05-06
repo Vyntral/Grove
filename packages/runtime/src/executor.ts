@@ -1,4 +1,4 @@
-import type { AgentCacheConfig, AgentDef, ToolDef } from '@grove/core'
+import type { AgentCacheConfig, AgentDef, ToolDef } from '@vyntral/grove-core'
 import { getCache, type DeterministicCache } from './cache.ts'
 import type {
   ExecuteInput,
@@ -254,7 +254,7 @@ export class AISDKBackend implements ExecutorBackend {
 
     // AI SDK v6 needs a recognised schema (Zod, JSON Schema via `jsonSchema()`,
     // or a Standard Schema). Grove's `SchemaLike` is a structural shim. Adapt:
-    // - `_jsonSchema` flag (set by @grove/mcp) → wrap with AI SDK's jsonSchema()
+    // - `_jsonSchema` flag (set by @vyntral/grove-mcp) → wrap with AI SDK's jsonSchema()
     // - otherwise pass through (Zod's `~standard` shape works natively)
     const aiJsonSchema = (mod as { jsonSchema?: (s: unknown) => unknown })
       .jsonSchema

@@ -134,6 +134,6 @@ then escalate.
 
 It's young. Be prepared for the v0.x API to evolve until v1.0 freezes.
 We try to keep `CHANGELOG.md` honest about what changed and to follow
-SemVer for `@grove/*` packages. If you depend on a specific behaviour,
-write an eval test for it (`@grove/eval`) so regressions are caught
+SemVer for `@vyntral/grove-*` packages. If you depend on a specific behaviour,
+write an eval test for it (`@vyntral/grove-eval`) so regressions are caught
 in CI.

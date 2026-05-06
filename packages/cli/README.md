@@ -1,10 +1,10 @@
-# @grove/cli
+# @vyntral/grove-cli
 
 > The `grove` command. Init, run, inspect, compile, eval, diff, fork,
 > cache, bench.
 
 ```bash
-bun add -g @grove/cli   # or use `bunx @grove/cli` / `npx grove`
+bun add -g @vyntral/grove-cli   # or use `bunx @vyntral/grove-cli` / `npx grove`
 grove --help
 ```
 

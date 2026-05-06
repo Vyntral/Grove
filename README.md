@@ -13,7 +13,7 @@
 </p>
 
 ```bash
-bun add @grove/core @grove/runtime
+bun add @vyntral/grove-core @vyntral/grove-runtime
 ```
 
 ---
@@ -33,8 +33,8 @@ Grove takes the lessons from 30 years of Erlang/OTP fault tolerance, adds a work
 Define your agent topology. The runtime spawns each agent as a supervised process. When something crashes — and it will — the supervisor restarts it under your declared strategy (`one_for_one`, `one_for_all`, or `rest_for_one`), with crash-loop guards. Let it crash; let the system heal.
 
 ```ts
-import { agent, supervise, tool } from '@grove/core'
-import { start } from '@grove/runtime'
+import { agent, supervise, tool } from '@vyntral/grove-core'
+import { start } from '@vyntral/grove-runtime'
 
 const research = agent({
   name: 'research',
@@ -104,7 +104,7 @@ $ grove run --watch agent.ts
 Declare eval cases, save a profile, diff across runs. CI exits non-zero on regression.
 
 ```ts
-import { suite, evalCase, contains } from '@grove/eval'
+import { suite, evalCase, contains } from '@vyntral/grove-eval'
 
 export const suite = suite('word-counter', [
   evalCase({
@@ -135,7 +135,7 @@ Long system prompts are cached at the model layer for `anthropic/*` models — G
 ### 7. MCP-native — any tool from any MCP server, plug-and-play
 
 ```ts
-import { mcpServer } from '@grove/mcp'
+import { mcpServer } from '@vyntral/grove-mcp'
 
 const fs = await mcpServer({
   command: 'npx',
@@ -160,7 +160,7 @@ Spawned as real stdio child processes. Tool calls flow through Grove's recorder 
 curl -fsSL https://bun.sh/install | bash
 
 # Then in your project:
-bun add @grove/core @grove/runtime @grove/compiler @grove/cli
+bun add @vyntral/grove-core @vyntral/grove-runtime @vyntral/grove-compiler @vyntral/grove-cli
 ```
 
 > Grove targets Bun 1.3+ for native SQLite + native TypeScript. Node support tracked in [#node-support](https://github.com/Vyntral/Grove/issues).

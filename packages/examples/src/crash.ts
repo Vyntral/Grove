@@ -9,9 +9,9 @@
  * succeeds. The recorder captures the crash + restart events so the Bench
  * (or `grove inspect`) shows exactly what happened.
  */
-import { agent, supervise, tool } from '@grove/core'
-import { start } from '@grove/runtime'
-import { MockBackend } from '@grove/runtime'
+import { agent, supervise, tool } from '@vyntral/grove-core'
+import { start } from '@vyntral/grove-runtime'
+import { MockBackend } from '@vyntral/grove-runtime'
 import { z } from 'zod'
 
 let calls = 0

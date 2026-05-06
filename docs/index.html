@@ -71,7 +71,7 @@
 
       <div class="mt-10 flex flex-wrap items-center gap-3">
         <a href="#install" class="bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-semibold px-5 py-3 rounded-md transition mono text-sm">
-          bun add @grove/core
+          bun add @vyntral/grove-core
         </a>
         <a href="https://github.com/Vyntral/Grove" class="bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 px-5 py-3 rounded-md text-sm flex items-center gap-2">
           Read the source →
@@ -175,7 +175,7 @@
 
         <div class="bg-zinc-900/60 border border-zinc-800 rounded-lg p-4 mono text-sm overflow-x-auto">
           <span class="text-zinc-500"># Add Grove</span><br>
-          <span class="text-emerald-300">bun add @grove/core @grove/runtime @grove/cli</span>
+          <span class="text-emerald-300">bun add @vyntral/grove-core @vyntral/grove-runtime @vyntral/grove-cli</span>
         </div>
 
         <div class="bg-zinc-900/60 border border-zinc-800 rounded-lg p-4 mono text-sm overflow-x-auto">
@@ -185,8 +185,8 @@
       </div>
 
       <h3 class="text-xl font-semibold mt-12">Hello, supervised agent</h3>
-      <pre class="mt-4 bg-zinc-900/60 border border-zinc-800 rounded-lg p-5 text-xs sm:text-sm overflow-x-auto leading-relaxed"><code><span class="text-fuchsia-300">import</span> { agent, supervise, tool } <span class="text-fuchsia-300">from</span> <span class="text-emerald-300">'@grove/core'</span>
-<span class="text-fuchsia-300">import</span> { start } <span class="text-fuchsia-300">from</span> <span class="text-emerald-300">'@grove/runtime'</span>
+      <pre class="mt-4 bg-zinc-900/60 border border-zinc-800 rounded-lg p-5 text-xs sm:text-sm overflow-x-auto leading-relaxed"><code><span class="text-fuchsia-300">import</span> { agent, supervise, tool } <span class="text-fuchsia-300">from</span> <span class="text-emerald-300">'@vyntral/grove-core'</span>
+<span class="text-fuchsia-300">import</span> { start } <span class="text-fuchsia-300">from</span> <span class="text-emerald-300">'@vyntral/grove-runtime'</span>
 <span class="text-fuchsia-300">import</span> { z } <span class="text-fuchsia-300">from</span> <span class="text-emerald-300">'zod'</span>
 
 <span class="text-fuchsia-300">const</span> <span class="text-cyan-300">search</span> = <span class="text-yellow-300">tool</span>({

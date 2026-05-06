@@ -1,7 +1,7 @@
 import { Database } from 'bun:sqlite'
 import { existsSync, mkdirSync } from 'node:fs'
 import { join } from 'node:path'
-import type { MemoryDef, MemoryKind, ToolDef } from '@grove/core'
+import type { MemoryDef, MemoryKind, ToolDef } from '@vyntral/grove-core'
 
 const SCHEMA = `
 CREATE TABLE IF NOT EXISTS memory (

@@ -5,8 +5,8 @@
  *
  * Demonstrates: agent definition, tool with Zod schema, supervised start.
  */
-import { agent, supervise, tool } from '@grove/core'
-import { start } from '@grove/runtime'
+import { agent, supervise, tool } from '@vyntral/grove-core'
+import { start } from '@vyntral/grove-runtime'
 import { z } from 'zod'
 
 const greet = tool({

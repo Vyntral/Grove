@@ -1,7 +1,7 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { c, symbols } from '../colors.ts'
-import { getRecorder } from '@grove/runtime'
+import { getRecorder } from '@vyntral/grove-runtime'
 
 interface ForkFile {
   forkedFrom: string

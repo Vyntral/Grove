@@ -1,6 +1,6 @@
 {
-  "name": "@grove/compiler",
-  "version": "0.0.3",
+  "name": "@vyntral/grove-compiler",
+  "version": "0.0.5",
   "description": "Grove compiler — analyse agent topologies, identify deterministic paths, project cost reductions, and emit cached executables.",
   "type": "module",
   "main": "./src/index.ts",
@@ -13,7 +13,7 @@
     }
   },
   "dependencies": {
-    "@grove/core": "workspace:*"
+    "@vyntral/grove-core": "workspace:*"
   },
   "license": "MIT",
   "publishConfig": {

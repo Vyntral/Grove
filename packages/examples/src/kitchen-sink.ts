@@ -18,9 +18,9 @@
  * Inspect the run:   grove inspect <session-id>
  */
 import { join } from 'node:path'
-import { agent, supervise, tool } from '@grove/core'
-import { start, AISDKBackend, getCache } from '@grove/runtime'
-import { mcpServer } from '@grove/mcp'
+import { agent, supervise, tool } from '@vyntral/grove-core'
+import { start, AISDKBackend, getCache } from '@vyntral/grove-runtime'
+import { mcpServer } from '@vyntral/grove-mcp'
 import { z } from 'zod'
 
 /* ─── 1. local tool (deterministic, cacheable) ─────────────────────── */

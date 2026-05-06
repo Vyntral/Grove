@@ -1,9 +1,9 @@
 import { resolve, basename } from 'node:path'
 import { existsSync } from 'node:fs'
 import { c, symbols } from '../colors.ts'
-import { analyse, emit, prewarm, type TopologyAnalysis } from '@grove/compiler'
-import { isAgent, isSupervisor } from '@grove/core'
-import { getCache } from '@grove/runtime'
+import { analyse, emit, prewarm, type TopologyAnalysis } from '@vyntral/grove-compiler'
+import { isAgent, isSupervisor } from '@vyntral/grove-core'
+import { getCache } from '@vyntral/grove-runtime'
 
 /**
  * `grove compile <file>` — analyse the agent topology exported by a script

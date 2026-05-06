@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { getRecorder } from '@grove/runtime'
+import { getRecorder } from '@vyntral/grove-runtime'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const HTML = readFileSync(join(__dirname, 'index.html'), 'utf8')

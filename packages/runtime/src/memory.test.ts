@@ -2,7 +2,7 @@ import { describe, expect, test, beforeEach } from 'bun:test'
 import { mkdtempSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { memory } from '@grove/core'
+import { memory } from '@vyntral/grove-core'
 import { MemoryStore } from './memory.ts'
 
 function fresh() {

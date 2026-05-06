@@ -1,6 +1,6 @@
 {
-  "name": "@grove/eval",
-  "version": "0.0.3",
+  "name": "@vyntral/grove-eval",
+  "version": "0.0.5",
   "description": "Grove eval — declare cases, run them through an agent, capture behavioural profiles, diff across runs.",
   "type": "module",
   "main": "./src/index.ts",
@@ -13,8 +13,8 @@
     }
   },
   "dependencies": {
-    "@grove/core": "workspace:*",
-    "@grove/runtime": "workspace:*"
+    "@vyntral/grove-core": "workspace:*",
+    "@vyntral/grove-runtime": "workspace:*"
   },
   "license": "MIT",
   "publishConfig": {

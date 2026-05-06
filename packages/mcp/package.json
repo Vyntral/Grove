@@ -1,6 +1,6 @@
 {
-  "name": "@grove/mcp",
-  "version": "0.0.3",
+  "name": "@vyntral/grove-mcp",
+  "version": "0.0.5",
   "description": "Grove MCP adapter — mount tools from any Model Context Protocol server as Grove tools.",
   "type": "module",
   "main": "./src/index.ts",
@@ -13,14 +13,14 @@
     }
   },
   "dependencies": {
-    "@grove/core": "workspace:*"
+    "@vyntral/grove-core": "workspace:*"
   },
   "peerDependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
-    "@grove/runtime": "workspace:*"
+    "@vyntral/grove-runtime": "workspace:*"
   },
   "peerDependenciesMeta": {
-    "@grove/runtime": { "optional": true }
+    "@vyntral/grove-runtime": { "optional": true }
   },
   "license": "MIT",
   "publishConfig": {

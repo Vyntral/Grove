@@ -9,8 +9,8 @@
  * just emits `text_chunk` events as the model produces them, so the
  * Bench shows tokens land in real time.
  */
-import { agent, supervise } from '@grove/core'
-import { start, AISDKBackend, getRecorder } from '@grove/runtime'
+import { agent, supervise } from '@vyntral/grove-core'
+import { start, AISDKBackend, getRecorder } from '@vyntral/grove-runtime'
 
 const writer = agent({
   name: 'writer',

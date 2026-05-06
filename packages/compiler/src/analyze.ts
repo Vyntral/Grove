@@ -3,8 +3,8 @@ import type {
   AnyTool,
   ChildDef,
   SupervisorDef,
-} from '@grove/core'
-import { isSupervisor } from '@grove/core'
+} from '@vyntral/grove-core'
+import { isSupervisor } from '@vyntral/grove-core'
 import { projectCost } from './cost.ts'
 
 export interface AgentAnalysis {

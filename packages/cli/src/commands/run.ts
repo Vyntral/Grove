@@ -6,8 +6,8 @@ import {
   start,
   watchTree,
   type ReloadController,
-} from '@grove/runtime'
-import { isAgent, isSupervisor, type SupervisorDef } from '@grove/core'
+} from '@vyntral/grove-runtime'
+import { isAgent, isSupervisor, type SupervisorDef } from '@vyntral/grove-core'
 
 interface RunFlags {
   readonly watch: boolean

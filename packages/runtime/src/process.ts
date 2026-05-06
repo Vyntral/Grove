@@ -1,4 +1,4 @@
-import type { AgentDef, StepRecord } from '@grove/core'
+import type { AgentDef, StepRecord } from '@vyntral/grove-core'
 import { Mailbox } from './bus.ts'
 import { executeAgent } from './executor.ts'
 import { getRecorder } from './recorder.ts'

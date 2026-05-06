@@ -133,7 +133,7 @@ export interface SupervisorDef {
   readonly restart: RestartPolicy
 }
 
-/* ─── Runtime contracts (implemented by @grove/runtime) ────────────── */
+/* ─── Runtime contracts (implemented by @vyntral/grove-runtime) ────────────── */
 
 export interface AgentRunInput {
   readonly input: unknown

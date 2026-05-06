@@ -1,4 +1,4 @@
-import { agent, supervise } from '@grove/core'
+import { agent, supervise } from '@vyntral/grove-core'
 
 const a = agent({
   name: 'svc',

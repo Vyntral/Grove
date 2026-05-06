@@ -1,6 +1,6 @@
 {
-  "name": "@grove/core",
-  "version": "0.0.3",
+  "name": "@vyntral/grove-core",
+  "version": "0.0.5",
   "description": "Grove core primitives: agent, tool, memory, supervise.",
   "type": "module",
   "main": "./src/index.ts",
@@ -17,7 +17,7 @@
     }
   },
   "peerDependencies": {
-    "zod": "^3.23.0"
+    "zod": "^3.23.0 || ^4.0.0"
   },
   "license": "MIT",
   "publishConfig": {

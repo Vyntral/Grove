@@ -1,6 +1,6 @@
 {
-  "name": "@grove/cli",
-  "version": "0.0.3",
+  "name": "@vyntral/grove-cli",
+  "version": "0.0.5",
   "description": "Grove CLI — init, run, inspect, compile.",
   "type": "module",
   "main": "./src/index.ts",
@@ -14,11 +14,11 @@
     }
   },
   "dependencies": {
-    "@grove/core": "workspace:*",
-    "@grove/runtime": "workspace:*",
-    "@grove/compiler": "workspace:*",
-    "@grove/bench": "workspace:*",
-    "@grove/eval": "workspace:*"
+    "@vyntral/grove-core": "workspace:*",
+    "@vyntral/grove-runtime": "workspace:*",
+    "@vyntral/grove-compiler": "workspace:*",
+    "@vyntral/grove-bench": "workspace:*",
+    "@vyntral/grove-eval": "workspace:*"
   },
   "license": "MIT",
   "publishConfig": {

@@ -1,5 +1,5 @@
 import { c, symbols } from '../colors.ts'
-import { listProfiles, loadProfile, diffProfiles } from '@grove/eval'
+import { listProfiles, loadProfile, diffProfiles } from '@vyntral/grove-eval'
 
 /**
  * `grove diff <suite> [base] [head]` — compare two eval profiles.

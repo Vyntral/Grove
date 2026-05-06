@@ -8,8 +8,8 @@
  * entirely. The console prints the latency delta and the recorder logs
  * `cache_hit` events visible in the Bench (`grove bench`).
  */
-import { agent, supervise, tool } from '@grove/core'
-import { start, getCache } from '@grove/runtime'
+import { agent, supervise, tool } from '@vyntral/grove-core'
+import { start, getCache } from '@vyntral/grove-runtime'
 import { z } from 'zod'
 
 const expensiveLookup = tool({

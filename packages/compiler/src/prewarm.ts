@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto'
-import type { AgentDef, AnyTool, ChildDef, SupervisorDef } from '@grove/core'
-import { isSupervisor } from '@grove/core'
+import type { AgentDef, AnyTool, ChildDef, SupervisorDef } from '@vyntral/grove-core'
+import { isSupervisor } from '@vyntral/grove-core'
 
 export interface PrewarmEntry {
   readonly tool: string

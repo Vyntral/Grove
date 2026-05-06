@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test'
-import { agent, supervise, tool } from '@grove/core'
+import { agent, supervise, tool } from '@vyntral/grove-core'
 import { prewarm } from './prewarm.ts'
 
 describe('compiler prewarm', () => {

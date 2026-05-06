@@ -1,15 +1,15 @@
-# @grove/mcp
+# @vyntral/grove-mcp
 
 > Mount tools from any Model Context Protocol stdio server as Grove
 > `ToolDef[]`. Same lifecycle, same recorder, same cache as native tools.
 
 ```bash
-bun add @grove/mcp @modelcontextprotocol/sdk
+bun add @vyntral/grove-mcp @modelcontextprotocol/sdk
 ```
 
 ```ts
-import { agent } from '@grove/core'
-import { mcpServer } from '@grove/mcp'
+import { agent } from '@vyntral/grove-core'
+import { mcpServer } from '@vyntral/grove-mcp'
 
 const fs = await mcpServer({
   command: 'npx',

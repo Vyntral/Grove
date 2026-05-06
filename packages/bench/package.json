@@ -1,6 +1,6 @@
 {
-  "name": "@grove/bench",
-  "version": "0.0.3",
+  "name": "@vyntral/grove-bench",
+  "version": "0.0.5",
   "description": "Grove Bench — live web inspector for the runtime (topology, timeline, time-travel).",
   "type": "module",
   "main": "./src/server.ts",
@@ -14,8 +14,8 @@
     "grove-bench": "./bin/bench.ts"
   },
   "dependencies": {
-    "@grove/core": "workspace:*",
-    "@grove/runtime": "workspace:*"
+    "@vyntral/grove-core": "workspace:*",
+    "@vyntral/grove-runtime": "workspace:*"
   },
   "license": "MIT",
   "publishConfig": {

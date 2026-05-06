@@ -2,14 +2,14 @@
 
 Status: **draft**, evolving until v1.0. Public APIs are tagged with `@stable` in source. Anything else may change.
 
-## Core primitives — `@grove/core`
+## Core primitives — `@vyntral/grove-core`
 
 ### `tool(spec)`
 
 Build a typed tool callable by an agent.
 
 ```ts
-import { tool } from '@grove/core'
+import { tool } from '@vyntral/grove-core'
 import { z } from 'zod'
 
 const search = tool({
@@ -85,7 +85,7 @@ Restart policy:
 
 If `intensity` is exceeded, the supervisor itself crashes and bubbles to its parent.
 
-## Runtime — `@grove/runtime`
+## Runtime — `@vyntral/grove-runtime`
 
 ### `start(tree, opts)`
 
@@ -120,9 +120,9 @@ Process-wide singleton (`getRecorder()`). Emits `RuntimeEvent`s and persists the
 ### Backends
 
 - `MockBackend` — deterministic stub, default. Calls the first matching tool from the agent's set, otherwise echoes a structured response. Lets every example run with zero credentials.
-- `AISDKBackend` — calls Vercel AI SDK v6. Activate by setting `GROVE_BACKEND=ai-sdk` (or `import { AISDKBackend } from '@grove/runtime'` and pass it explicitly).
+- `AISDKBackend` — calls Vercel AI SDK v6. Activate by setting `GROVE_BACKEND=ai-sdk` (or `import { AISDKBackend } from '@vyntral/grove-runtime'` and pass it explicitly).
 
-## Compiler — `@grove/compiler`
+## Compiler — `@vyntral/grove-compiler`
 
 ### `analyse(tree)` → `TopologyAnalysis`
 
@@ -134,7 +134,7 @@ Writes a compile artifact under `<dir>/<name>/`:
 - `manifest.json` — analysis snapshot + cache strategy
 - `index.ts` — runtime shim (caching layer in v0.1)
 
-## CLI — `@grove/cli`
+## CLI — `@vyntral/grove-cli`
 
 ```
 grove init [file]              scaffold a new agent file
@@ -144,7 +144,7 @@ grove compile <file>           analyse a topology + emit a compile artifact
 grove bench [--port=N]         launch the live web inspector
 ```
 
-## Bench — `@grove/bench`
+## Bench — `@vyntral/grove-bench`
 
 `startBench({ port? })` → Bun server with:
 

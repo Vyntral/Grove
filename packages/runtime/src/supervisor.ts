@@ -4,8 +4,8 @@ import type {
   RestartPolicy,
   RestartStrategy,
   SupervisorDef,
-} from '@grove/core'
-import { isSupervisor } from '@grove/core'
+} from '@vyntral/grove-core'
+import { isSupervisor } from '@vyntral/grove-core'
 import { AgentProcess } from './process.ts'
 import { getRecorder } from './recorder.ts'
 import { installShutdown, onShutdown } from './shutdown.ts'
