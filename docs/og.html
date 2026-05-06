@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Grove — OG image source (1280×640)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1280px; height: 640px; overflow: hidden; }
+    body {
+      background: #0a0a0c;
+      color: #f4f4f5;
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+      position: relative;
+      padding: 80px;
+    }
+    /* radial accent in corner */
+    .glow {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(800px 500px at 90% 10%, rgba(74, 222, 128, 0.12), transparent 60%),
+        radial-gradient(900px 600px at 10% 110%, rgba(34, 211, 238, 0.08), transparent 60%);
+      pointer-events: none;
+    }
+    .grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    .content { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
+
+    .top { display: flex; align-items: center; gap: 18px; margin-bottom: 44px; }
+    .emoji { font-size: 78px; line-height: 1; }
+    .brand { font-size: 64px; font-weight: 700; letter-spacing: -0.02em; }
+    .ver {
+      font-family: ui-monospace, 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+      font-size: 16px; color: #71717a;
+      padding: 4px 10px;
+      border: 1px solid #27272a; border-radius: 6px;
+      margin-left: auto;
+    }
+
+    h1 {
+      font-size: 60px; font-weight: 700; line-height: 1.05;
+      letter-spacing: -0.025em;
+      max-width: 980px;
+    }
+    h1 .grad {
+      background: linear-gradient(105deg, #4ade80 0%, #34d399 50%, #67e8f9 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .pills { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px; }
+    .pill {
+      font-size: 18px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: rgba(39, 39, 42, 0.6);
+      border: 1px solid rgba(63, 63, 70, 0.6);
+      color: #d4d4d8;
+      backdrop-filter: blur(10px);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .pill .dot { width: 6px; height: 6px; border-radius: 50%; }
+    .pill.green .dot  { background: #4ade80; }
+    .pill.cyan .dot   { background: #67e8f9; }
+    .pill.amber .dot  { background: #fbbf24; }
+    .pill.fuchsia .dot{ background: #d946ef; }
+
+    .bottom {
+      margin-top: auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .install {
+      font-family: ui-monospace, 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+      font-size: 22px;
+      color: #4ade80;
+      background: rgba(74, 222, 128, 0.06);
+      border: 1px solid rgba(74, 222, 128, 0.25);
+      border-radius: 10px;
+      padding: 14px 20px;
+    }
+    .install .prompt { color: #71717a; margin-right: 10px; }
+    .url { font-size: 18px; color: #71717a; font-family: ui-monospace, monospace; }
+    .url strong { color: #d4d4d8; }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="grid"></div>
+
+  <div class="content">
+    <div class="top">
+      <span class="emoji">🌳</span>
+      <span class="brand">Grove</span>
+      <span class="ver">v0.0.6 · MIT</span>
+    </div>
+
+    <h1>Production-grade<br/><span class="grad">AI agents.</span></h1>
+
+    <div class="pills">
+      <span class="pill green"><span class="dot"></span>OTP-style supervision</span>
+      <span class="pill cyan"><span class="dot"></span>compile-to-determinism</span>
+      <span class="pill amber"><span class="dot"></span>live time-travel</span>
+      <span class="pill fuchsia"><span class="dot"></span>MCP-native</span>
+    </div>
+
+    <div class="bottom">
+      <div class="install">
+        <span class="prompt">$</span>bun add @vyntral/grove-core @vyntral/grove-runtime
+      </div>
+      <div class="url">github.com/<strong>Vyntral/Grove</strong></div>
+    </div>
+  </div>
+</body>
+</html>
