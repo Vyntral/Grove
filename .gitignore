@@ -11,3 +11,7 @@ packages/*/dist/
 
 # Test fixtures created on the fly.
 **/__fixtures__/*_active.ts
+
+# Internal launch playbook — Show HN drafts, tweet threads, screencast
+# scripts, marketing reply triggers. Never push to the public repo.
+docs/launch/
