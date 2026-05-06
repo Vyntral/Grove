@@ -6,6 +6,18 @@ All notable changes to Grove are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.0.6] — 2026-05-06 — README polish
+
+### Changed
+- Replaced auto-generated stub READMEs in `@vyntral/grove-{core,runtime,compiler}`
+  with real per-package documentation. The npm registry serves README from
+  the published tarball, not from the GitHub repo, so 0.0.5's package
+  pages on npmjs.com showed the stubs. 0.0.6 ships the proper READMEs.
+
+### Added
+- README badges: npm version (`@vyntral/grove-core`), docs link
+  (`vyntral.github.io/Grove`), and an explicit `changelog` badge.
+
 ## [0.0.5] — 2026-05-06 — first npm release
 
 ### Changed (breaking)
